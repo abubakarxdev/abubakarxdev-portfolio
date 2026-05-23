@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ShieldCheck, ArrowUpRight } from "lucide-react";
 
 interface Credential {
@@ -49,7 +49,7 @@ export default function VerifiedCredentials() {
     }
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -58,7 +58,7 @@ export default function VerifiedCredentials() {
     },
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
