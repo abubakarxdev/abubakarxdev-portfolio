@@ -67,7 +67,7 @@ export default function CommandTerminal() {
         response = "AVAILABLE_COMMANDS: whoami, cat resume.pdf, sudo hire, cd experience, cd projects, cd academic, cd credentials, clear";
         break;
       case "whoami":
-        response = "Abu Bakar // Full-Stack Systems Engineer & DevSecOps. Operating from Faisalabad, PK. Stack: Next.js, Node.js, Python, PostgreSQL.";
+        response = "Abu Bakar // Full-Stack Systems Engineer & DevSecOps. Operating from Islamabad, PK. Stack: Next.js, Node.js, Python, PostgreSQL.";
         break;
       case "cat resume.pdf":
         response = "Access granted. Initiating secure download protocol...";
