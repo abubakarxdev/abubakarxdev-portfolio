@@ -12,9 +12,53 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://abubakarxdev-portfolio.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Cyber-Minimalist Portfolio",
-  description: "High-end, cyber-minimalist personal portfolio",
+  title: "Abu Bakar | Software Engineer & DevSecOps",
+  description:
+    "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
+  keywords: [
+    "Abu Bakar",
+    "Software Engineer",
+    "Backend Developer",
+    "DevSecOps",
+    "Next.js",
+    "FastAPI",
+    "PostgreSQL",
+    "Systems Architecture",
+  ],
+  authors: [{ name: "Abu Bakar" }],
+  creator: "Abu Bakar",
+  metadataBase: new URL(SITE_URL),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    title: "Abu Bakar | Software Engineer & DevSecOps",
+    description:
+      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
+    siteName: "Abu Bakar Portfolio",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Abu Bakar | Software Engineer & DevSecOps",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abu Bakar | Software Engineer & DevSecOps",
+    description:
+      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
