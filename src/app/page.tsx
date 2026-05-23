@@ -11,8 +11,30 @@ import Footer from "@/components/Footer";
 import BootLoader from "@/components/BootLoader";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Abu Bakar",
+    url: "https://abubakarxdev-portfolio.vercel.app",
+    image: "https://abubakarxdev-portfolio.vercel.app/operator.png",
+    sameAs: ["https://github.com/abubakarxdev"],
+    jobTitle: "Software Engineer & DevSecOps",
+    worksFor: {
+      "@type": "Organization",
+      name: "Pulse Matrix LLC",
+    },
+    description:
+      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
+  };
+
   return (
     <div className="relative min-h-screen bg-obsidian text-primary selection:bg-accent-green selection:text-black">
+      {/* JSON-LD Structured Data for search engine rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Global Terminal Entry Loader */}
       <BootLoader />
 
