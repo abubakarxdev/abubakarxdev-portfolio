@@ -97,7 +97,13 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto"
           >
-            <button className="group relative px-8 py-3.5 rounded-md font-mono text-xs tracking-widest bg-black border border-accent-green/30 text-accent-green overflow-hidden transition-all duration-300 hover:border-accent-green hover:shadow-[0_0_20px_rgba(0,255,204,0.25),0_0_40px_rgba(255,0,51,0.1)] active:scale-95">
+            <button 
+              onClick={() => {
+                const el = document.getElementById("contact");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="group relative px-8 py-3.5 rounded-md font-mono text-xs tracking-widest bg-black border border-accent-green/30 text-accent-green overflow-hidden transition-all duration-300 hover:border-accent-green hover:shadow-[0_0_20px_rgba(0,255,204,0.25),0_0_40px_rgba(255,0,51,0.1)] active:scale-95"
+            >
               <span className="absolute inset-0 w-full h-full bg-accent-green/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               INITIALIZE_CONTACT
             </button>
@@ -110,6 +116,22 @@ export default function Hero() {
             >
               SYS_ARCH_VIEW [Resume]
             </a>
+          </motion.div>
+
+          {/* CLI Shortcut CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex items-center gap-2 font-mono text-[10px] md:text-xs text-muted/40 mt-1 select-none"
+          >
+            <span>&gt; Prefer the command line?</span>
+            <button
+              onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, ctrlKey: true }))}
+              className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-[9px] md:text-[10px] text-muted/60 hover:text-accent-green hover:border-accent-green/20 hover:shadow-[0_0_10px_rgba(0,255,204,0.1)] cursor-pointer transition-all duration-200"
+            >
+              RUN_SHELL [ ⌘K ]
+            </button>
           </motion.div>
         </div>
 

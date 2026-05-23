@@ -44,6 +44,12 @@ export default function Navbar() {
               {item.name}
             </Link>
           ))}
+          {/* Muted Terminal Shortcut Hint */}
+          <div className="hidden lg:flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 font-mono text-[9px] text-muted/30 select-none">
+            <span className="text-accent-green/60 animate-pulse font-bold">//</span>
+            <span>SYS_SHELL</span>
+            <span className="text-accent-green/80 font-bold">[ ⌘K ]</span>
+          </div>
         </div>
 
         {/* Mobile Hamburger Button */}

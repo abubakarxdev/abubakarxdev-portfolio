@@ -17,6 +17,17 @@ export default function Footer() {
           <span>© 2026 Abu Bakar. All protocols initialized.</span>
         </div>
       </div>
+
+      <div className="mt-8 flex justify-center text-xs text-white/30 font-mono">
+        <a 
+          href="/api/engineer" 
+          target="_blank" 
+          rel="noreferrer"
+          className="hover:text-[#00ffcc] transition-colors"
+        >
+          {">"} GET /api/engineer
+        </a>
+      </div>
     </footer>
   );
 }
