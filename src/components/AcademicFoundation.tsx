@@ -17,7 +17,13 @@ export default function AcademicFoundation() {
       {/* Delicate line background grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.007)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.007)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-5xl w-full"
+      >
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,8 +46,7 @@ export default function AcademicFoundation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          whileHover={{ y: -4, boxShadow: "0 0 20px rgba(0, 255, 204, 0.04)", borderColor: "rgba(0, 255, 204, 0.12)" }}
-          className="glass-panel p-8 rounded-lg border border-white/5 relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-8 transition-all duration-300 group"
+          className="glass-panel p-8 rounded-lg relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-8 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] hover:border-accent-green/30 transition-all duration-300 group"
         >
           {/* Top light glow highlights */}
           <div className="absolute top-0 right-0 w-40 h-40 bg-accent-green/2 blur-[80px] pointer-events-none group-hover:bg-accent-green/4 transition-colors duration-500" />
@@ -86,7 +91,7 @@ export default function AcademicFoundation() {
             <Cpu size={32} className="text-muted/30 group-hover:text-accent-green transition-colors duration-500 animate-pulse" />
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

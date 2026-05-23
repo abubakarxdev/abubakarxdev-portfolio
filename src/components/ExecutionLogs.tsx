@@ -63,7 +63,13 @@ export default function ExecutionLogs() {
       {/* Delicate line background grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.007)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.007)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-5xl w-full"
+      >
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -127,7 +133,7 @@ export default function ExecutionLogs() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

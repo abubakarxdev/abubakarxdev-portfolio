@@ -55,8 +55,7 @@ export default function CapabilitiesBento() {
           {/* Box 1 (Span 2 cols) - Current Execution */}
           <motion.div
             variants={cardVariants}
-            whileHover={{ y: -4, boxShadow: "0 0 25px rgba(0, 255, 204, 0.06)", borderColor: "rgba(0, 255, 204, 0.15)" }}
-            className="glass-panel md:col-span-2 p-8 flex flex-col justify-between transition-all duration-300 relative overflow-hidden group"
+            className="glass-panel md:col-span-2 p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] hover:border-accent-green/30 transition-all duration-300 relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent-green/2 blur-[60px] pointer-events-none group-hover:bg-accent-green/5 transition-all duration-500" />
             
@@ -85,8 +84,7 @@ export default function CapabilitiesBento() {
           {/* Box 2 (Square) - Core Stack */}
           <motion.div
             variants={cardVariants}
-            whileHover={{ y: -4, boxShadow: "0 0 25px rgba(0, 255, 204, 0.06)", borderColor: "rgba(0, 255, 204, 0.15)" }}
-            className="glass-panel p-8 flex flex-col justify-between transition-all duration-300 relative overflow-hidden group"
+            className="glass-panel p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] hover:border-accent-green/30 transition-all duration-300 relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-accent-green/2 blur-[50px] pointer-events-none group-hover:bg-accent-green/5 transition-all duration-500" />
             
@@ -113,8 +111,7 @@ export default function CapabilitiesBento() {
           {/* Box 3 (Square) - DevSecOps */}
           <motion.div
             variants={cardVariants}
-            whileHover={{ y: -4, boxShadow: "0 0 25px rgba(245, 158, 11, 0.06)", borderColor: "rgba(245, 158, 11, 0.15)" }}
-            className="glass-panel p-8 flex flex-col justify-between transition-all duration-300 relative overflow-hidden group"
+            className="glass-panel p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(245,158,11,0.15)] hover:border-amber-500/30 transition-all duration-300 relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/2 blur-[50px] pointer-events-none group-hover:bg-amber-500/5 transition-all duration-500" />
             
@@ -147,8 +144,7 @@ export default function CapabilitiesBento() {
           {/* Box 4 (Span 2 cols) - System Integrations */}
           <motion.div
             variants={cardVariants}
-            whileHover={{ y: -4, boxShadow: "0 0 25px rgba(0, 255, 204, 0.06)", borderColor: "rgba(0, 255, 204, 0.15)" }}
-            className="glass-panel md:col-span-2 p-8 flex flex-col justify-between transition-all duration-300 relative overflow-hidden group"
+            className="glass-panel md:col-span-2 p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] hover:border-accent-green/30 transition-all duration-300 relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent-green/2 blur-[60px] pointer-events-none group-hover:bg-accent-green/5 transition-all duration-500" />
             

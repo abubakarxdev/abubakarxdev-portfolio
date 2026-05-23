@@ -205,7 +205,13 @@ export default function ProjectsShowcase() {
       {/* Cyber grid lines background overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.007)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.007)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-5xl w-full"
+      >
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -239,7 +245,7 @@ export default function ProjectsShowcase() {
                   className="w-full lg:w-1/2 aspect-video glass-panel rounded-lg shadow-xl relative overflow-hidden flex items-center justify-center border border-white/5 hover:border-white/10 transition-colors duration-300 group"
                 >
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/80 to-transparent z-0 group-hover:opacity-40 transition-opacity duration-300" />
-                  <div className="relative z-10 w-full h-full">
+                  <div className="relative z-10 w-full h-full opacity-80 grayscale-[20%] transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-[1.02]">
                     {proj.mockup}
                   </div>
                 </motion.div>
@@ -303,7 +309,7 @@ export default function ProjectsShowcase() {
             );
           })}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

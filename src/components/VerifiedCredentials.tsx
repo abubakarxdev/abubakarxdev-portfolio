@@ -104,8 +104,7 @@ export default function VerifiedCredentials() {
             <motion.div
               key={idx}
               variants={cardVariants}
-              whileHover={{ y: -4, boxShadow: "0 0 20px rgba(0, 255, 204, 0.05)", borderColor: "rgba(0, 255, 204, 0.15)" }}
-              className="glass-panel p-6 flex flex-col justify-between gap-6 transition-all duration-300 relative overflow-hidden group"
+              className="glass-panel p-6 flex flex-col justify-between gap-6 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] hover:border-accent-green/30 transition-all duration-300 relative overflow-hidden group"
             >
               {/* Top Accent line simulating ticket cut */}
               <div className="absolute top-0 left-0 right-0 h-[1px] bg-accent-green/25 group-hover:bg-accent-green/60 transition-colors duration-300" />
