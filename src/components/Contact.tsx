@@ -7,12 +7,14 @@ import { Terminal, Send, ShieldCheck } from "lucide-react";
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "transmitting" | "success" | "error">("idle");
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setStatus("transmitting");
+    setIsError(false);
     
     try {
       const response = await fetch("/api/transmit", {
@@ -36,6 +38,7 @@ export default function Contact() {
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       setStatus("error");
+      setIsError(true);
       setTimeout(() => setStatus("idle"), 4000);
     }
   };
@@ -216,35 +219,64 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status !== "idle"}
-                className="group relative w-full py-4 rounded font-mono text-[10px] tracking-widest bg-black border border-accent-green/30 text-accent-green overflow-hidden transition-all duration-300 hover:border-accent-green hover:shadow-[0_0_20px_rgba(0,255,204,0.25)] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`group relative w-full py-4 rounded font-mono text-[10px] tracking-widest bg-black border overflow-hidden transition-all duration-300 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed ${
+                  isError
+                    ? "border-accent-red text-accent-red hover:border-accent-red hover:shadow-[0_0_20px_rgba(255,0,51,0.2)]"
+                    : "border-accent-green/30 text-accent-green hover:border-accent-green hover:shadow-[0_0_20px_rgba(0,255,204,0.25)]"
+                }`}
               >
                 <span className="absolute inset-0 w-full h-full bg-accent-green/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 
-                {status === "idle" && (
-                  <span className="flex items-center justify-center gap-2">
-                    TRANSMIT_DATA <Send size={11} />
+                {isError ? (
+                  <span className="flex items-center justify-center gap-2 text-accent-red font-bold animate-pulse">
+                    [ TRANSMISSION_FAILED ]
                   </span>
-                )}
+                ) : (
+                  <>
+                    {status === "idle" && (
+                      <span className="flex items-center justify-center gap-2">
+                        TRANSMIT_DATA <Send size={11} />
+                      </span>
+                    )}
 
-                {status === "transmitting" && (
-                  <span className="flex items-center justify-center gap-2 animate-pulse text-accent-green">
-                    ENCRYPTING_PAYLOAD...
-                  </span>
-                )}
+                    {status === "transmitting" && (
+                      <span className="flex items-center justify-center gap-2 animate-pulse text-accent-green">
+                        ENCRYPTING_PAYLOAD...
+                      </span>
+                    )}
 
-                {status === "success" && (
-                  <span className="flex items-center justify-center gap-2 text-accent-green font-bold">
-                    TRANSMISSION_SUCCESS <ShieldCheck size={13} />
-                  </span>
-                )}
+                    {status === "success" && (
+                      <span className="flex items-center justify-center gap-2 text-accent-green font-bold">
+                        TRANSMISSION_SUCCESS <ShieldCheck size={13} />
+                      </span>
+                    )}
 
-                {status === "error" && (
-                  <span className="flex items-center justify-center gap-2 text-accent-red font-bold">
-                    ERROR_RETRY
-                  </span>
+                    {status === "error" && (
+                      <span className="flex items-center justify-center gap-2 text-accent-red font-bold">
+                        ERROR_RETRY
+                      </span>
+                    )}
+                  </>
                 )}
               </button>
             </form>
+
+            {/* Hardened Error Fallback Messaging */}
+            {isError && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 rounded border border-accent-red/20 bg-accent-red/5 font-mono text-[10px] md:text-xs text-accent-red/90 leading-relaxed text-left"
+              >
+                Primary dispatch routed failed. Initiate manual fallback:{" "}
+                <a 
+                  href="mailto:abubakarxdev@gmail.com" 
+                  className="underline hover:text-white transition-colors font-bold"
+                >
+                  abubakarxdev@gmail.com
+                </a>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </div>
