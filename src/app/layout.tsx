@@ -17,18 +17,21 @@ const jetbrainsMono = JetBrains_Mono({
 const SITE_URL = "https://abubakarxdev-portfolio.vercel.app";
 
 export const metadata: Metadata = {
-  title: "Abu Bakar | Software Engineer & DevSecOps",
+  title: "Abu Bakar | Full-Stack Systems Engineer & DevSecOps",
   description:
-    "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
+    "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure API architectures, performant serverless workflows, and DevSecOps enterprise deployments.",
   keywords: [
     "Abu Bakar",
     "Software Engineer",
-    "Backend Developer",
+    "Full-Stack Systems Engineer",
+    "Backend API Architect",
     "DevSecOps",
     "Next.js",
     "FastAPI",
     "PostgreSQL",
+    "Supabase",
     "Systems Architecture",
+    "Secure Web Developer"
   ],
   authors: [{ name: "Abu Bakar" }],
   creator: "Abu Bakar",
@@ -37,25 +40,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    title: "Abu Bakar | Software Engineer & DevSecOps",
+    title: "Abu Bakar | Full-Stack Systems Engineer & DevSecOps",
     description:
-      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
+      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure API architectures, performant serverless workflows, and DevSecOps enterprise deployments.",
     siteName: "Abu Bakar Portfolio",
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`,
+        url: `${SITE_URL}/operator.png`,
         width: 1200,
         height: 630,
-        alt: "Abu Bakar | Software Engineer & DevSecOps",
+        alt: "Abu Bakar | Full-Stack Systems Engineer & DevSecOps",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abu Bakar | Software Engineer & DevSecOps",
+    title: "Abu Bakar | Full-Stack Systems Engineer & DevSecOps",
     description:
-      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
-    images: [`${SITE_URL}/og-image.jpg`],
+      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure API architectures, performant serverless workflows, and DevSecOps enterprise deployments.",
+    images: [`${SITE_URL}/operator.png`],
   },
   icons: {
     icon: "/favicon.ico",
