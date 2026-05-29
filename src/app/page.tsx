@@ -18,13 +18,13 @@ export default function Home() {
     url: "https://abubakarxdev-portfolio.vercel.app",
     image: "https://abubakarxdev-portfolio.vercel.app/operator.png",
     sameAs: ["https://github.com/abubakarxdev"],
-    jobTitle: "Software Engineer & DevSecOps",
+    jobTitle: "Full-Stack Systems Engineer & DevSecOps",
     worksFor: {
       "@type": "Organization",
       name: "Pulse Matrix LLC",
     },
     description:
-      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure REST APIs, serverless architectures, and enterprise system deployments.",
+      "Professional portfolio of Abu Bakar. Full-Stack Systems Engineer specializing in secure API architectures, performant serverless workflows, and DevSecOps enterprise deployments.",
   };
 
   return (
