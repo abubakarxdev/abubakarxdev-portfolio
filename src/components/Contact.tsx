@@ -1,23 +1,56 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Terminal, Send, ShieldCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Terminal, Send, ShieldCheck, HelpCircle, Lock } from "lucide-react";
+import { playSystemSound } from "./AudioEngine";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "transmitting" | "success" | "error">("idle");
-  const [isError, setIsError] = useState(false);
+  const [transmissionLogs, setTransmissionLogs] = useState<string[]>([]);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
+  const writeLog = (msg: string) => {
+    setTransmissionLogs((prev) => [...prev, msg]);
+  };
+
+  const handleInputChange = (field: string, val: string) => {
+    setFormData((prev) => ({ ...prev, [field]: val }));
+    playSystemSound("keypress"); // Play tactile typing keysound
+  };
+
+  const handleInputFocus = (field: string) => {
+    setFocusedField(field);
+    playSystemSound("click");
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setStatus("transmitting");
-    setIsError(false);
-    
+    setTransmissionLogs([]);
+    playSystemSound("click");
+
+    const runLogSequence = async () => {
+      writeLog("SYS_NET: CONNECTING TO SECURE RETRIEVAL NODE...");
+      await new Promise((resolve) => setTimeout(resolve, 550));
+      
+      writeLog("SYS_CRYPT: PACKETIZING DATA CARGO STREAM...");
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      
+      writeLog("SYS_CRYPT: ENCRYPTING PAYLOAD WITH AES-256-GCM...");
+      await new Promise((resolve) => setTimeout(resolve, 600));
+      
+      writeLog("SYS_NET: DISPATCHING SECURE DATA PACKETS...");
+    };
+
     try {
-      const response = await fetch("/api/transmit", {
+      // Run visual log sequence in parallel with fetch call
+      const logPromise = runLogSequence();
+      
+      const fetchPromise = fetch("/api/transmit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,22 +62,41 @@ export default function Contact() {
         }),
       });
 
+      // Wait for both to complete
+      const [, response] = await Promise.all([logPromise, fetchPromise]);
+
       if (!response.ok) {
         throw new Error("TRANSMISSION_FAILED");
       }
 
+      writeLog("SYS_NET: CONFIRMED. PACKET RECEIVED BY OPERATOR INBOX // 200 OK");
+      playSystemSound("success");
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
+      
+      setTimeout(() => {
+        setStatus("idle");
+        setTransmissionLogs([]);
+      }, 7000);
+
     } catch (error) {
+      writeLog("SYS_NET: CRITICAL ERROR. TRANSMISSION LINK COLLAPSED.");
+      playSystemSound("error");
       setStatus("error");
-      setIsError(true);
-      setTimeout(() => setStatus("idle"), 4000);
+      
+      setTimeout(() => {
+        setStatus("idle");
+        setTransmissionLogs([]);
+      }, 7000);
     }
   };
 
+  const handleHoverAction = () => {
+    playSystemSound("keypress");
+  };
+
   return (
-    <section id="contact" className="relative w-full py-24 bg-obsidian px-6 md:px-12 flex flex-col items-center">
+    <section id="contact" className="relative w-full py-24 bg-obsidian px-6 md:px-12 flex flex-col items-center select-none">
       {/* Subtle lines grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.007)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.007)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
 
@@ -67,55 +119,66 @@ export default function Contact() {
 
         {/* 2-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left Column: System Details */}
+          
+          {/* Left Column: Telemetry receiver metrics */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-panel p-8 flex flex-col gap-6 relative overflow-hidden"
+            className="glass-panel p-8 flex flex-col gap-6 relative overflow-hidden group"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-accent-green/2 blur-[60px] pointer-events-none" />
+            <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/10 group-hover:border-accent-green/40 transition-colors" />
+            <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/10 group-hover:border-accent-green/40 transition-colors" />
+
+            <div className="absolute top-0 right-0 w-36 h-36 bg-accent-green/2 blur-[70px] pointer-events-none group-hover:bg-accent-green/4 transition-colors" />
             
-            <div className="flex items-center gap-2 border-b border-white/5 pb-4">
-              <Terminal size={15} className="text-accent-green" />
-              <span className="font-mono text-[10px] text-accent-green tracking-wider">
-                RECEIVER_METRICS: OPERATIONAL
-              </span>
+            <div className="flex items-center justify-between border-b border-white/5 pb-4">
+              <div className="flex items-center gap-2">
+                <Terminal size={14} className="text-accent-green animate-pulse" />
+                <span className="font-mono text-[10px] text-accent-green tracking-widest uppercase">
+                  RECEIVER_METRICS: ACTIVE
+                </span>
+              </div>
+              <div className="flex items-center gap-1 font-mono text-[8px] text-muted/30">
+                <Lock size={9} />
+                <span>TLS_1.3_ENCRYPTED</span>
+              </div>
             </div>
 
-            {/* Metrics data */}
+            {/* Micro metric details list */}
             <div className="font-mono text-xs space-y-4 text-muted">
               <div>
-                <span className="text-accent-green font-bold">EMAIL_ADDRESS:</span>
+                <span className="text-accent-green font-bold">// SECURE_RETRIEVAL_ENDPOINT:</span>
                 <p className="mt-1 text-primary break-all hover:text-accent-green transition-colors duration-200">
                   abubakarxdev@gmail.com
                 </p>
               </div>
 
               <div>
-                <span className="text-accent-green font-bold">ENCRYPTED_LINE:</span>
+                <span className="text-accent-green font-bold">// DIRECT_OPERATOR_LINE:</span>
                 <p className="mt-1 text-primary">+92 314 6554602</p>
               </div>
 
               <div>
-                <span className="text-accent-green font-bold">BASE_LOCATION:</span>
+                <span className="text-accent-green font-bold">// PHYSICAL_COORD:</span>
                 <p className="mt-1 text-primary">Islamabad, Pakistan</p>
               </div>
 
               <div className="pt-5 border-t border-white/5 flex flex-col gap-3">
                 <span className="text-accent-green font-bold">// SOCIALS_DISPATCH</span>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2.5">
                   <a
                     href="https://github.com/abubakarxdev"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onMouseEnter={handleHoverAction}
                     className="flex items-center gap-2 text-muted hover:text-accent-green transition-colors duration-200 w-fit"
                   >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
-                      width="14" 
-                      height="14" 
+                      width="13" 
+                      height="13" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                       stroke="currentColor" 
@@ -133,12 +196,13 @@ export default function Contact() {
                     href="https://linkedin.com/in/abubakarxdev"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onMouseEnter={handleHoverAction}
                     className="flex items-center gap-2 text-muted hover:text-accent-green transition-colors duration-200 w-fit"
                   >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
-                      width="14" 
-                      height="14" 
+                      width="13" 
+                      height="13" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                       stroke="currentColor" 
@@ -157,118 +221,164 @@ export default function Contact() {
             </div>
           </motion.div>
 
-
-          {/* Right Column: Encrypted Form */}
+          {/* Right Column: Active cryptographic dispatcher console form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-6 w-full"
           >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              {/* Sender ID */}
-              <div className="flex flex-col gap-2">
-                <label className="font-mono text-[9px] text-accent-green tracking-widest">
-                  [SENDER_ID]
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="IDENTIFY YOUR SYSTEM OR NAME"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  disabled={status !== "idle"}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded px-4 py-3.5 font-mono text-[11px] text-primary focus:outline-none focus:border-accent-green focus:shadow-[0_0_12px_rgba(0,255,204,0.12)] transition-all duration-300 disabled:opacity-50"
-                />
-              </div>
-
-              {/* Reply Address */}
-              <div className="flex flex-col gap-2">
-                <label className="font-mono text-[9px] text-accent-green tracking-widest">
-                  [REPLY_ADDRESS]
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="ENTER RETRIEVAL ADDRESS (EMAIL)"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  disabled={status !== "idle"}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded px-4 py-3.5 font-mono text-[11px] text-primary focus:outline-none focus:border-accent-green focus:shadow-[0_0_12px_rgba(0,255,204,0.12)] transition-all duration-300 disabled:opacity-50"
-                />
-              </div>
-
-              {/* Payload Data */}
-              <div className="flex flex-col gap-2">
-                <label className="font-mono text-[9px] text-accent-green tracking-widest">
-                  [PAYLOAD_DATA]
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="WRITE CIPHERTEXT PACKET DETAILS..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  disabled={status !== "idle"}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded px-4 py-3.5 font-mono text-[11px] text-primary focus:outline-none focus:border-accent-green focus:shadow-[0_0_12px_rgba(0,255,204,0.12)] transition-all duration-300 resize-none disabled:opacity-50"
-                />
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={status !== "idle"}
-                className={`group relative w-full py-4 rounded font-mono text-[10px] tracking-widest bg-black border overflow-hidden transition-all duration-300 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed ${
-                  isError
-                    ? "border-accent-red text-accent-red hover:border-accent-red hover:shadow-[0_0_20px_rgba(255,0,51,0.2)]"
-                    : "border-accent-green/30 text-accent-green hover:border-accent-green hover:shadow-[0_0_20px_rgba(0,255,204,0.25)]"
-                }`}
-              >
-                <span className="absolute inset-0 w-full h-full bg-accent-green/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            {status !== "transmitting" && status !== "success" && status !== "error" ? (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 
-                {isError ? (
-                  <span className="flex items-center justify-center gap-2 text-accent-red font-bold animate-pulse">
-                    [ TRANSMISSION_FAILED ]
+                {/* Sender ID Input */}
+                <div className="flex flex-col gap-2 relative group">
+                  <label className="font-mono text-[9px] text-accent-green tracking-widest select-none">
+                    [SENDER_ID]
+                  </label>
+                  
+                  <div className="relative flex items-center">
+                    {/* Glowing Brackets */}
+                    <span className={`absolute left-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "name" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
+                    <span className={`absolute right-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "name" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
+                    
+                    <input
+                      type="text"
+                      required
+                      placeholder="IDENTIFY YOUR NAME OR SYSTEM_NODE"
+                      value={formData.name}
+                      onFocus={() => handleInputFocus("name")}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={(e) => handleInputChange("name", e.target.value)}
+                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-green/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300"
+                    />
+                  </div>
+                </div>
+
+                {/* Reply Address Input */}
+                <div className="flex flex-col gap-2 relative group">
+                  <label className="font-mono text-[9px] text-accent-green tracking-widest select-none">
+                    [REPLY_ADDRESS]
+                  </label>
+                  
+                  <div className="relative flex items-center">
+                    <span className={`absolute left-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "email" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
+                    <span className={`absolute right-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "email" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
+                    
+                    <input
+                      type="email"
+                      required
+                      placeholder="ENTER RETRIEVAL ADDRESS (EMAIL)"
+                      value={formData.email}
+                      onFocus={() => handleInputFocus("email")}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-green/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300"
+                    />
+                  </div>
+                </div>
+
+                {/* Payload Data Input */}
+                <div className="flex flex-col gap-2 relative group">
+                  <label className="font-mono text-[9px] text-accent-green tracking-widest select-none">
+                    [PAYLOAD_DATA]
+                  </label>
+                  
+                  <div className="relative flex items-center">
+                    <span className={`absolute left-2.5 top-3.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "message" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
+                    <span className={`absolute right-2.5 bottom-3.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "message" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
+                    
+                    <textarea
+                      required
+                      rows={4}
+                      placeholder="WRITE SECURE DISPATCH CARGO DETAILS..."
+                      value={formData.message}
+                      onFocus={() => handleInputFocus("message")}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={(e) => handleInputChange("message", e.target.value)}
+                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-green/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300 resize-none"
+                    />
+                  </div>
+                </div>
+
+                {/* Transmit Button */}
+                <button
+                  type="submit"
+                  onMouseEnter={handleHoverAction}
+                  className="group relative w-full py-4 rounded font-mono text-[10px] tracking-widest bg-black border border-accent-green/35 text-accent-green overflow-hidden transition-all duration-300 hover:border-accent-green hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] active:scale-[0.99] cursor-pointer"
+                >
+                  <span className="absolute inset-0 w-full h-full bg-accent-green/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <span className="flex items-center justify-center gap-2">
+                    TRANSMIT_SECURE_DATA <Send size={11} />
                   </span>
-                ) : (
-                  <>
-                    {status === "idle" && (
-                      <span className="flex items-center justify-center gap-2">
-                        TRANSMIT_DATA <Send size={11} />
-                      </span>
-                    )}
+                </button>
+              </form>
+            ) : (
+              /* Active terminal transmission log box screen */
+              <div className="w-full p-6 bg-black border border-white/10 rounded-lg font-mono text-[10px] text-muted flex flex-col gap-3 min-h-[300px] shadow-[0_0_50px_rgba(0,0,0,0.85)] relative overflow-hidden select-none">
+                
+                {/* Scanning sweep inside log console */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[size:100%_4px] pointer-events-none" />
+                
+                <div className="flex items-center justify-between border-b border-white/5 pb-2 mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+                    <span className="text-accent-green tracking-widest text-[9px] uppercase">// ENCRYPTED_DISPATCH_SHELL</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[8px] text-muted/30">
+                    <Lock size={9} className="text-accent-green" />
+                    <span>AES_256_ACTIVE</span>
+                  </div>
+                </div>
 
-                    {status === "transmitting" && (
-                      <span className="flex items-center justify-center gap-2 animate-pulse text-accent-green">
-                        ENCRYPTING_PAYLOAD...
-                      </span>
-                    )}
+                {/* Stream logs */}
+                <div className="flex-1 flex flex-col gap-2.5 text-left text-accent-green">
+                  {transmissionLogs.map((log, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, x: -5 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex gap-2"
+                    >
+                      <span className="text-white/20 select-none">[{ (idx * 0.5).toFixed(1) }s]</span>
+                      <span>&gt; {log}</span>
+                    </motion.div>
+                  ))}
+                </div>
 
-                    {status === "success" && (
-                      <span className="flex items-center justify-center gap-2 text-accent-green font-bold">
-                        TRANSMISSION_SUCCESS <ShieldCheck size={13} />
-                      </span>
-                    )}
-
-                    {status === "error" && (
-                      <span className="flex items-center justify-center gap-2 text-accent-red font-bold">
-                        ERROR_RETRY
-                      </span>
-                    )}
-                  </>
-                )}
-              </button>
-            </form>
-
-            {/* Hardened Error Fallback Messaging */}
-            {isError && (
+                {/* Final status state actions */}
+                <div className="border-t border-white/5 pt-3 mt-2 flex items-center justify-between">
+                  {status === "transmitting" && (
+                    <span className="flex items-center gap-2 text-amber-500 font-bold animate-pulse text-[9px]">
+                      [TRANSMITTING PAYLOAD PACKET...]
+                    </span>
+                  )}
+                  {status === "success" && (
+                    <span className="flex items-center gap-2 text-accent-green font-bold text-[9px] animate-pulse">
+                      DISPATCH SECURELY ROUTED <ShieldCheck size={12} />
+                    </span>
+                  )}
+                  {status === "error" && (
+                    <span className="flex items-center gap-2 text-accent-red font-bold text-[9px] animate-pulse">
+                      TRANSMISSION LINK FAILURE
+                    </span>
+                  )}
+                  
+                  <span className="text-[8px] text-muted/20">PORT: 443</span>
+                </div>
+              </div>
+            )}
+            
+            {/* Fallback secure dispatcher failure message */}
+            {status === "error" && (
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="p-4 rounded border border-accent-red/20 bg-accent-red/5 font-mono text-[10px] md:text-xs text-accent-red/90 leading-relaxed text-left"
               >
-                Primary dispatch routed failed. Initiate manual fallback:{" "}
+                Network dispatch failed. Please override manually by sending an email directly to:{" "}
                 <a 
                   href="mailto:abubakarxdev@gmail.com" 
                   className="underline hover:text-white transition-colors font-bold"

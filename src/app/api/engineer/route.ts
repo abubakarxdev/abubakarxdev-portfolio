@@ -37,6 +37,36 @@ export async function GET() {
         status: "Completed",
       },
     ],
+    verified_credentials: [
+      {
+        id: "582fc86fb977",
+        title: "IBM Cloud Essentials V3",
+        issuer: "IBM",
+        date: "Jan 2025",
+        verification_link: "https://courses.cognitiveclass.ai/certificates/582fc86fb9774c0eae3cac3652286587",
+      },
+      {
+        id: "UC-47b4a32a",
+        title: "Professional Diploma in Software Testing",
+        issuer: "MTF Institute",
+        date: "Feb 2025",
+        verification_link: "https://www.udemy.com/certificate/UC-47b4a32a-93d8-4a5a-b13a-44047235f274/",
+      },
+      {
+        id: "UC-f726fbc0",
+        title: "Practical Next.js & React",
+        issuer: "Udemy",
+        date: "Jan 2025",
+        verification_link: "https://udemy-certificate.s3.amazonaws.com/image/UC-f726fbc0-d1bb-480d-b0d1-535e03027558.jpg",
+      },
+      {
+        id: "0f03b9e7",
+        title: "Introduction to Cyber Security",
+        issuer: "HP",
+        date: "Dec 2024",
+        verification_link: "https://api.life-global.org/learning/api/certificates/0f03b9e7-886c-4d66-8e94-f87db3cf4470",
+      }
+    ],
     academic_foundation: {
       degree: "Bachelor of Software Engineering",
       institution: "COMSATS University Islamabad",

@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-8 flex justify-center text-xs text-white/30 font-mono">
+      <div className="mt-8 flex justify-center text-xs text-zinc-500 font-mono">
         <a 
           href="/api/engineer" 
           target="_blank" 
