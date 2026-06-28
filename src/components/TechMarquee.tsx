@@ -31,7 +31,7 @@ export default function TechMarquee() {
           {/* Render 3 repetitions to ensure perfect infinite wrap coverage */}
           {[...techs, ...techs, ...techs].map((tech, idx) => (
             <React.Fragment key={idx}>
-              <span className="font-mono text-[10px] md:text-xs text-muted/30 hover:text-accent-green hover:shadow-[0_0_10px_rgba(0,255,204,0.15)] transition-all duration-300 select-none tracking-widest uppercase">
+              <span className="font-mono text-[10px] md:text-xs text-muted/30 hover:text-accent-blue hover:shadow-[0_0_10px_rgba(0,255,204,0.15)] transition-all duration-300 select-none tracking-widest uppercase">
                 {tech}
               </span>
               <span className="font-mono text-[10px] text-muted/10 select-none font-bold">

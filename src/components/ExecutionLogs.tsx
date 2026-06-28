@@ -78,7 +78,7 @@ export default function ExecutionLogs() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-left"
         >
-          <p className="font-mono text-[10px] md:text-xs text-accent-green tracking-widest uppercase mb-2">
+          <p className="font-mono text-[10px] md:text-xs text-accent-blue tracking-widest uppercase mb-2">
             // CAREER_EXECUTION_LOGS
           </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-sans">
@@ -101,7 +101,7 @@ export default function ExecutionLogs() {
               className="p-6 md:p-8 bg-white/[0.01] hover:bg-white/[0.03] border border-white/5 hover:border-white/10 rounded-lg transition-all duration-300 relative group flex flex-col md:flex-row justify-between gap-6"
             >
               {/* Timeline Indicator border */}
-              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent-green/20 group-hover:bg-accent-green/60 transition-colors duration-300 rounded-l" />
+              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent-blue/20 group-hover:bg-accent-blue/60 transition-colors duration-300 rounded-l" />
 
               {/* Job Title and detail metrics */}
               <div className="flex-1 flex flex-col gap-3">
@@ -110,7 +110,7 @@ export default function ExecutionLogs() {
                     {log.role}
                   </h3>
                   <span className="text-muted/40 hidden sm:inline">|</span>
-                  <span className="text-accent-green font-mono text-xs md:text-sm tracking-wide">
+                  <span className="text-accent-blue font-mono text-xs md:text-sm tracking-wide">
                     {log.company}
                   </span>
                 </div>
@@ -122,11 +122,11 @@ export default function ExecutionLogs() {
               {/* Metadata: Date & Location details */}
               <div className="flex flex-row md:flex-col items-start md:items-end justify-between md:justify-center gap-4 md:gap-2 font-mono text-[10px] md:text-xs text-muted/50 whitespace-nowrap pt-4 md:pt-0 border-t md:border-t-0 border-white/5">
                 <div className="flex items-center gap-1.5 group-hover:text-muted/80 transition-colors duration-300">
-                  <Calendar size={12} className="text-accent-green/80" />
+                  <Calendar size={12} className="text-accent-blue/80" />
                   <span>{log.date}</span>
                 </div>
                 <div className="flex items-center gap-1.5 group-hover:text-muted/80 transition-colors duration-300">
-                  <MapPin size={12} className="text-accent-green/80" />
+                  <MapPin size={12} className="text-accent-blue/80" />
                   <span>{log.location}</span>
                 </div>
               </div>

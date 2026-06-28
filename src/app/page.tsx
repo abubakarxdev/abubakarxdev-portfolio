@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Manifesto from "@/components/Manifesto";
 import TechMarquee from "@/components/TechMarquee";
 import CapabilitiesBento from "@/components/CapabilitiesBento";
 import ExecutionLogs from "@/components/ExecutionLogs";
@@ -28,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-obsidian text-primary selection:bg-accent-green selection:text-black">
+    <div className="relative min-h-screen bg-obsidian text-primary selection:bg-accent-blue selection:text-black">
       {/* JSON-LD Structured Data for search engine rich results */}
       <script
         type="application/ld+json"
@@ -44,6 +45,9 @@ export default function Home() {
       <main className="flex flex-col">
         {/* Immersive Hero Section */}
         <Hero />
+
+        {/* Kinetic Manifesto Section */}
+        <Manifesto />
 
         {/* Endless Tech Marquee Section */}
         <TechMarquee />

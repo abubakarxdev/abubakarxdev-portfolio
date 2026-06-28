@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion, Variants } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, Variants, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Terminal, ArrowRight, Code } from "lucide-react";
 import Image from "next/image";
 
@@ -11,6 +11,33 @@ const FADE_UP_ANIMATION_VARIANTS: Variants = {
 };
 
 export default function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-0.5, 0.5], [10, -10]);
+  const rotateY = useTransform(x, [-0.5, 0.5], [-10, 10]);
+
+  const springConfig = { damping: 30, stiffness: 200, mass: 1 };
+  const smoothRotateX = useSpring(rotateX, springConfig);
+  const smoothRotateY = useSpring(rotateY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    x.set(mouseX / width - 0.5);
+    y.set(mouseY / height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   const handleContactScroll = () => {
     const el = document.getElementById("contact");
     el?.scrollIntoView({ behavior: "smooth" });
@@ -20,7 +47,7 @@ export default function Hero() {
     <section className="relative min-h-[100dvh] w-full bg-obsidian flex items-center justify-center overflow-hidden px-6 md:px-12 py-24 select-none">
       
       {/* Refined subtle ambient glow */}
-      <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-accent-green/10 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-accent-blue/10 blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-white/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
       {/* Main Container */}
@@ -43,8 +70,8 @@ export default function Hero() {
         <div className="flex-1 flex flex-col items-start gap-8 text-left w-full">
           
           <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/5 font-mono text-[11px] text-accent-green tracking-wider uppercase flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+            <span className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/5 font-mono text-[11px] text-accent-blue tracking-wider uppercase flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
               Full-Stack Systems Engineer
             </span>
           </motion.div>
@@ -81,24 +108,34 @@ export default function Hero() {
         </div>
 
         {/* Right Side: Elegant Operator Portrait */}
-        <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="w-full max-w-[320px] lg:max-w-[360px] flex flex-col items-center lg:items-end justify-center">
-          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-black/40 border border-white/10 shadow-[0_0_40px_rgba(0,255,204,0.05)]">
+        <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="w-full max-w-[320px] lg:max-w-[360px] flex flex-col items-center lg:items-end justify-center perspective-[2000px]">
+          <motion.div 
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              rotateX: smoothRotateX,
+              rotateY: smoothRotateY,
+            }}
+            className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-black/40 border border-white/10 shadow-[0_0_40px_rgba(0,102,255,0.05)] transform-gpu"
+          >
             <Image
               src="/ab.jpg"
               alt="Abu Bakar"
               fill
               priority
               sizes="(max-width: 768px) 100vw, 360px"
-              className="object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+              className="object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 scale-105"
             />
             {/* Soft inner shadow overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none shadow-inner" />
+          </motion.div>
           
           <div className="w-full mt-4 flex items-center justify-between px-2 font-mono text-[10px] text-muted/50 tracking-wider">
             <span>SYS_ID: ABU_BAKAR</span>
-            <span className="flex items-center gap-1.5 text-accent-green">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+            <span className="flex items-center gap-1.5 text-accent-blue">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
               ONLINE
             </span>
           </div>

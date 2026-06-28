@@ -69,9 +69,9 @@ export default function Navbar() {
           href="/" 
           onClick={handleLinkClick}
           onMouseEnter={handleLinkHover}
-          className="text-xl font-bold tracking-wider text-primary hover:text-accent-green transition-colors duration-300 z-50 font-sans"
+          className="text-xl font-bold tracking-wider text-primary hover:text-accent-blue transition-colors duration-300 z-50 font-sans"
         >
-          AB<span className="text-accent-green font-bold">.</span>
+          AB<span className="text-accent-blue font-bold">.</span>
         </Link>
 
         {/* Desktop Nav Links */}
@@ -82,7 +82,7 @@ export default function Navbar() {
               href={item.href}
               onClick={handleLinkClick}
               onMouseEnter={handleLinkHover}
-              className="font-mono text-xs text-muted hover:text-accent-green transition-colors duration-200 tracking-widest uppercase"
+              className="font-mono text-xs text-muted hover:text-accent-blue transition-colors duration-200 tracking-widest uppercase"
             >
               {item.name}
             </Link>
@@ -96,7 +96,7 @@ export default function Navbar() {
             onMouseEnter={handleLinkHover}
             className={`flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.02] border font-mono text-[9px] cursor-pointer transition-all duration-200 active:scale-95 ${
               audioEnabled 
-                ? "border-accent-green/30 text-accent-green hover:shadow-[0_0_10px_rgba(0,255,204,0.1)]" 
+                ? "border-accent-blue/30 text-accent-blue hover:shadow-[0_0_10px_rgba(0,255,204,0.1)]" 
                 : "border-white/5 text-muted/40 hover:text-muted/70"
             }`}
             title="Toggle Synthesizer Sound Design"
@@ -118,18 +118,18 @@ export default function Navbar() {
           <button
             onClick={handleLaunchTerminal}
             onMouseEnter={handleLinkHover}
-            className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#090909] border border-accent-green/30 text-[9px] font-mono text-accent-green hover:border-accent-green hover:shadow-[0_0_12px_rgba(0,255,204,0.2)] cursor-pointer transition-all duration-200 active:scale-95 group"
+            className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#090909] border border-accent-blue/30 text-[9px] font-mono text-accent-blue hover:border-accent-blue hover:shadow-[0_0_12px_rgba(0,255,204,0.2)] cursor-pointer transition-all duration-200 active:scale-95 group"
           >
             <Terminal size={11} className="group-hover:animate-pulse" />
             <span>SYS_SHELL</span>
-            <span className="text-[8px] text-muted/30 font-bold group-hover:text-accent-green/50 transition-colors">[ ⌘K ]</span>
+            <span className="text-[8px] text-muted/30 font-bold group-hover:text-accent-blue/50 transition-colors">[ ⌘K ]</span>
           </button>
         </div>
 
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => { playSystemSound("click"); setIsOpen(!isOpen); }}
-          className="md:hidden text-primary hover:text-accent-green transition-colors duration-200 z-50 p-2"
+          className="md:hidden text-primary hover:text-accent-blue transition-colors duration-200 z-50 p-2"
           aria-label="Toggle Menu"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -157,7 +157,7 @@ export default function Navbar() {
                   href={item.href}
                   onClick={() => { handleLinkClick(); setIsOpen(false); }}
                   onMouseEnter={handleLinkHover}
-                  className="font-mono text-xs text-muted hover:text-accent-green transition-colors duration-200 tracking-widest uppercase py-2 block border-b border-white/[0.02]"
+                  className="font-mono text-xs text-muted hover:text-accent-blue transition-colors duration-200 tracking-widest uppercase py-2 block border-b border-white/[0.02]"
                 >
                   {item.name}
                 </Link>
@@ -176,7 +176,7 @@ export default function Navbar() {
                 onClick={toggleAudio}
                 className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded bg-white/[0.02] border font-mono text-[10px] cursor-pointer transition-all duration-200 active:scale-95 ${
                   audioEnabled 
-                    ? "border-accent-green/30 text-accent-green" 
+                    ? "border-accent-blue/30 text-accent-blue" 
                     : "border-white/5 text-muted/40"
                 }`}
               >
@@ -196,7 +196,7 @@ export default function Navbar() {
               {/* Terminal badge launcher */}
               <button
                 onClick={handleLaunchTerminal}
-                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded bg-[#090909] border border-accent-green/30 font-mono text-[10px] text-accent-green cursor-pointer active:scale-95"
+                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded bg-[#090909] border border-accent-blue/30 font-mono text-[10px] text-accent-blue cursor-pointer active:scale-95"
               >
                 <Terminal size={11} />
                 <span>SYS_SHELL</span>

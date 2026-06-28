@@ -94,7 +94,7 @@ export default function BootLoader() {
             {/* Header telemetry info bar */}
             <div className="flex items-center gap-2 text-muted/30 text-[9px] w-full border-b border-white/5 pb-2 mb-2 tracking-widest uppercase">
               <span>● SYSTEM_BOOT_SEQUENCE</span>
-              <span className="ml-auto text-accent-green/60 animate-pulse">KERN_V16.2.6</span>
+              <span className="ml-auto text-accent-blue/60 animate-pulse">KERN_V16.2.6</span>
             </div>
 
             {/* Diagnostic Logs Stream Box */}
@@ -105,7 +105,7 @@ export default function BootLoader() {
               {visibleLogs.map((log, idx) => (
                 <div key={idx} className="flex gap-2">
                   <span className="text-white/20 select-none">[{ (idx * 0.05).toFixed(2) }]</span>
-                  <span className="text-accent-green/80">&gt;</span>
+                  <span className="text-accent-blue/80">&gt;</span>
                   <span>{log}</span>
                 </div>
               ))}
@@ -121,7 +121,7 @@ export default function BootLoader() {
                   </div>
                   <div className="w-full h-1.5 bg-white/[0.02] border border-white/5 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-accent-green transition-all duration-75 shadow-[0_0_10px_rgba(0,255,204,0.5)]" 
+                      className="h-full bg-accent-blue transition-all duration-75 shadow-[0_0_10px_rgba(0,255,204,0.5)]" 
                       style={{ width: `${progress}%` }} 
                     />
                   </div>
@@ -130,7 +130,7 @@ export default function BootLoader() {
                 <motion.div 
                   initial={{ scale: 0.95, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  className="w-full text-center py-2 border border-accent-green/30 bg-accent-green/5 text-accent-green font-bold text-xs md:text-sm tracking-widest rounded-md animate-pulse shadow-[0_0_20px_rgba(0,255,204,0.1)]"
+                  className="w-full text-center py-2 border border-accent-blue/30 bg-accent-blue/5 text-accent-blue font-bold text-xs md:text-sm tracking-widest rounded-md animate-pulse shadow-[0_0_20px_rgba(0,255,204,0.1)]"
                 >
                   ACCESS GRANTED // OPERATOR_ID: ABU_BAKAR
                 </motion.div>

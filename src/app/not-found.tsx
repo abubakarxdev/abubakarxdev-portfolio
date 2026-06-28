@@ -24,7 +24,7 @@ export default function NotFound() {
         {/* CTA link back to root */}
         <Link 
           href="/" 
-          className="mt-4 px-6 py-2.5 border border-accent-green/30 text-accent-green hover:border-accent-green hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] rounded-md text-xs tracking-wider transition-all duration-300"
+          className="mt-4 px-6 py-2.5 border border-accent-blue/30 text-accent-blue hover:border-accent-blue hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] rounded-md text-xs tracking-wider transition-all duration-300"
         >
           &gt; return_to_root
         </Link>

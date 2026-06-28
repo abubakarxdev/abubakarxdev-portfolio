@@ -62,7 +62,7 @@ export default function SystemTelemetry() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.95 }}
               transition={{ duration: 0.15 }}
-              className="bg-black/90 border border-accent-green/30 text-accent-green px-2 py-1 rounded text-[8px] font-mono tracking-widest shadow-2xl"
+              className="bg-black/90 border border-accent-blue/30 text-accent-blue px-2 py-1 rounded text-[8px] font-mono tracking-widest shadow-2xl"
             >
               [CLICK TO TOGGLE INTERACTIVE SHELL]
             </motion.div>
@@ -70,7 +70,7 @@ export default function SystemTelemetry() {
         </AnimatePresence>
 
         {/* Core telemetry floating pill */}
-        <div className="flex items-center gap-3 rounded border border-white/10 bg-[#090909]/90 px-3.5 py-2 font-mono text-[9px] text-white/50 shadow-[0_4px_20px_rgba(0,0,0,0.8)] backdrop-blur-md hover:border-accent-green/30 hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] transition-all duration-300">
+        <div className="flex items-center gap-3 rounded border border-white/10 bg-[#090909]/90 px-3.5 py-2 font-mono text-[9px] text-white/50 shadow-[0_4px_20px_rgba(0,0,0,0.8)] backdrop-blur-md hover:border-accent-blue/30 hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] transition-all duration-300">
           
           {/* Pulsing Status Dot */}
           <div className="relative flex h-2.5 w-2.5 items-center justify-center">

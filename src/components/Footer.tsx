@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-5xl w-full border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] md:text-xs font-mono text-muted/60">
         {/* Left Status dot */}
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
           <span>SYS_STATUS: ONLINE</span>
         </div>
 

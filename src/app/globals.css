@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian: #0a0a0a;
-  --color-primary: #ededed;
-  --color-muted: #d4d4d8; /* Zinc-300 equivalent for elevated readability */
-  --color-accent-green: #00ffcc;
-  --color-accent-red: #ff0033;
+  --color-obsidian: #000000; /* Pure void black */
+  --color-primary: #f8fafc; /* Slate 50 / Electric Silver */
+  --color-muted: #94a3b8; /* Slate 400 */
+  --color-accent-blue: #0066ff; /* Deep cobalt/electric blue */
+  --color-accent-red: #ff3333;
   
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-jetbrains-mono);

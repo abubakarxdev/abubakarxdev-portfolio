@@ -109,7 +109,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-left"
         >
-          <p className="font-mono text-[10px] md:text-xs text-accent-green tracking-widest uppercase mb-2">
+          <p className="font-mono text-[10px] md:text-xs text-accent-blue tracking-widest uppercase mb-2">
             // INITIATE_SECURE_CONNECTION
           </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-primary font-sans">
@@ -128,15 +128,15 @@ export default function Contact() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="glass-panel p-8 flex flex-col gap-6 relative overflow-hidden group"
           >
-            <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/10 group-hover:border-accent-green/40 transition-colors" />
-            <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/10 group-hover:border-accent-green/40 transition-colors" />
+            <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/10 group-hover:border-accent-blue/40 transition-colors" />
+            <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/10 group-hover:border-accent-blue/40 transition-colors" />
 
-            <div className="absolute top-0 right-0 w-36 h-36 bg-accent-green/2 blur-[70px] pointer-events-none group-hover:bg-accent-green/4 transition-colors" />
+            <div className="absolute top-0 right-0 w-36 h-36 bg-accent-blue/2 blur-[70px] pointer-events-none group-hover:bg-accent-blue/4 transition-colors" />
             
             <div className="flex items-center justify-between border-b border-white/5 pb-4">
               <div className="flex items-center gap-2">
-                <Terminal size={14} className="text-accent-green animate-pulse" />
-                <span className="font-mono text-[10px] text-accent-green tracking-widest uppercase">
+                <Terminal size={14} className="text-accent-blue animate-pulse" />
+                <span className="font-mono text-[10px] text-accent-blue tracking-widest uppercase">
                   RECEIVER_METRICS: ACTIVE
                 </span>
               </div>
@@ -149,31 +149,31 @@ export default function Contact() {
             {/* Micro metric details list */}
             <div className="font-mono text-xs space-y-4 text-muted">
               <div>
-                <span className="text-accent-green font-bold">// SECURE_RETRIEVAL_ENDPOINT:</span>
-                <p className="mt-1 text-primary break-all hover:text-accent-green transition-colors duration-200">
+                <span className="text-accent-blue font-bold">// SECURE_RETRIEVAL_ENDPOINT:</span>
+                <p className="mt-1 text-primary break-all hover:text-accent-blue transition-colors duration-200">
                   abubakarxdev@gmail.com
                 </p>
               </div>
 
               <div>
-                <span className="text-accent-green font-bold">// DIRECT_OPERATOR_LINE:</span>
+                <span className="text-accent-blue font-bold">// DIRECT_OPERATOR_LINE:</span>
                 <p className="mt-1 text-primary">+92 314 6554602</p>
               </div>
 
               <div>
-                <span className="text-accent-green font-bold">// PHYSICAL_COORD:</span>
+                <span className="text-accent-blue font-bold">// PHYSICAL_COORD:</span>
                 <p className="mt-1 text-primary">Islamabad, Pakistan</p>
               </div>
 
               <div className="pt-5 border-t border-white/5 flex flex-col gap-3">
-                <span className="text-accent-green font-bold">// SOCIALS_DISPATCH</span>
+                <span className="text-accent-blue font-bold">// SOCIALS_DISPATCH</span>
                 <div className="flex flex-col gap-2.5">
                   <a
                     href="https://github.com/abubakarxdev"
                     target="_blank"
                     rel="noopener noreferrer"
                     onMouseEnter={handleHoverAction}
-                    className="flex items-center gap-2 text-muted hover:text-accent-green transition-colors duration-200 w-fit"
+                    className="flex items-center gap-2 text-muted hover:text-accent-blue transition-colors duration-200 w-fit"
                   >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
@@ -197,7 +197,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onMouseEnter={handleHoverAction}
-                    className="flex items-center gap-2 text-muted hover:text-accent-green transition-colors duration-200 w-fit"
+                    className="flex items-center gap-2 text-muted hover:text-accent-blue transition-colors duration-200 w-fit"
                   >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
@@ -234,14 +234,14 @@ export default function Contact() {
                 
                 {/* Sender ID Input */}
                 <div className="flex flex-col gap-2 relative group">
-                  <label className="font-mono text-[9px] text-accent-green tracking-widest select-none">
+                  <label className="font-mono text-[9px] text-accent-blue tracking-widest select-none">
                     [SENDER_ID]
                   </label>
                   
                   <div className="relative flex items-center">
                     {/* Glowing Brackets */}
-                    <span className={`absolute left-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "name" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
-                    <span className={`absolute right-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "name" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
+                    <span className={`absolute left-2.5 font-mono text-xs text-accent-blue/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "name" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
+                    <span className={`absolute right-2.5 font-mono text-xs text-accent-blue/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "name" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
                     
                     <input
                       type="text"
@@ -251,20 +251,20 @@ export default function Contact() {
                       onFocus={() => handleInputFocus("name")}
                       onBlur={() => setFocusedField(null)}
                       onChange={(e) => handleInputChange("name", e.target.value)}
-                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-green/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300"
+                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-blue/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300"
                     />
                   </div>
                 </div>
 
                 {/* Reply Address Input */}
                 <div className="flex flex-col gap-2 relative group">
-                  <label className="font-mono text-[9px] text-accent-green tracking-widest select-none">
+                  <label className="font-mono text-[9px] text-accent-blue tracking-widest select-none">
                     [REPLY_ADDRESS]
                   </label>
                   
                   <div className="relative flex items-center">
-                    <span className={`absolute left-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "email" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
-                    <span className={`absolute right-2.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "email" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
+                    <span className={`absolute left-2.5 font-mono text-xs text-accent-blue/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "email" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
+                    <span className={`absolute right-2.5 font-mono text-xs text-accent-blue/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "email" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
                     
                     <input
                       type="email"
@@ -274,20 +274,20 @@ export default function Contact() {
                       onFocus={() => handleInputFocus("email")}
                       onBlur={() => setFocusedField(null)}
                       onChange={(e) => handleInputChange("email", e.target.value)}
-                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-green/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300"
+                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-blue/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300"
                     />
                   </div>
                 </div>
 
                 {/* Payload Data Input */}
                 <div className="flex flex-col gap-2 relative group">
-                  <label className="font-mono text-[9px] text-accent-green tracking-widest select-none">
+                  <label className="font-mono text-[9px] text-accent-blue tracking-widest select-none">
                     [PAYLOAD_DATA]
                   </label>
                   
                   <div className="relative flex items-center">
-                    <span className={`absolute left-2.5 top-3.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "message" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
-                    <span className={`absolute right-2.5 bottom-3.5 font-mono text-xs text-accent-green/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "message" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
+                    <span className={`absolute left-2.5 top-3.5 font-mono text-xs text-accent-blue/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "message" ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-0"}`}>[</span>
+                    <span className={`absolute right-2.5 bottom-3.5 font-mono text-xs text-accent-blue/80 transition-all duration-300 pointer-events-none select-none ${focusedField === "message" ? "opacity-100 translate-x-1" : "opacity-0 translate-x-0"}`}>]</span>
                     
                     <textarea
                       required
@@ -297,7 +297,7 @@ export default function Contact() {
                       onFocus={() => handleInputFocus("message")}
                       onBlur={() => setFocusedField(null)}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-green/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300 resize-none"
+                      className="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3.5 font-mono text-[10px] text-primary placeholder:text-zinc-500 focus:outline-none focus:border-accent-blue/30 focus:shadow-[0_0_20px_rgba(0,255,204,0.12)] focus:ring-0 transition-all duration-300 resize-none"
                     />
                   </div>
                 </div>
@@ -306,9 +306,9 @@ export default function Contact() {
                 <button
                   type="submit"
                   onMouseEnter={handleHoverAction}
-                  className="group relative w-full py-4 rounded font-mono text-[10px] tracking-widest bg-black border border-accent-green/35 text-accent-green overflow-hidden transition-all duration-300 hover:border-accent-green hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] active:scale-[0.99] cursor-pointer"
+                  className="group relative w-full py-4 rounded font-mono text-[10px] tracking-widest bg-black border border-accent-blue/35 text-accent-blue overflow-hidden transition-all duration-300 hover:border-accent-blue hover:shadow-[0_0_20px_rgba(0,255,204,0.15)] active:scale-[0.99] cursor-pointer"
                 >
-                  <span className="absolute inset-0 w-full h-full bg-accent-green/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <span className="absolute inset-0 w-full h-full bg-accent-blue/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                   <span className="flex items-center justify-center gap-2">
                     TRANSMIT_SECURE_DATA <Send size={11} />
                   </span>
@@ -323,17 +323,17 @@ export default function Contact() {
                 
                 <div className="flex items-center justify-between border-b border-white/5 pb-2 mb-1">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-                    <span className="text-accent-green tracking-widest text-[9px] uppercase">// ENCRYPTED_DISPATCH_SHELL</span>
+                    <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
+                    <span className="text-accent-blue tracking-widest text-[9px] uppercase">// ENCRYPTED_DISPATCH_SHELL</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-[8px] text-muted/30">
-                    <Lock size={9} className="text-accent-green" />
+                    <Lock size={9} className="text-accent-blue" />
                     <span>AES_256_ACTIVE</span>
                   </div>
                 </div>
 
                 {/* Stream logs */}
-                <div className="flex-1 flex flex-col gap-2.5 text-left text-accent-green">
+                <div className="flex-1 flex flex-col gap-2.5 text-left text-accent-blue">
                   {transmissionLogs.map((log, idx) => (
                     <motion.div 
                       key={idx}
@@ -356,7 +356,7 @@ export default function Contact() {
                     </span>
                   )}
                   {status === "success" && (
-                    <span className="flex items-center gap-2 text-accent-green font-bold text-[9px] animate-pulse">
+                    <span className="flex items-center gap-2 text-accent-blue font-bold text-[9px] animate-pulse">
                       DISPATCH SECURELY ROUTED <ShieldCheck size={12} />
                     </span>
                   )}

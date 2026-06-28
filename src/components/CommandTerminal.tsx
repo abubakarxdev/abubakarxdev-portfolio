@@ -79,7 +79,7 @@ function MatrixRain({ onComplete }: { onComplete: () => void }) {
   return (
     <div className="absolute inset-0 z-20 bg-black overflow-hidden rounded-b-lg">
       <canvas ref={canvasRef} className="w-full h-full" />
-      <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 border border-accent-green/30 text-accent-green text-[10px] font-mono rounded tracking-widest animate-pulse">
+      <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 border border-accent-blue/30 text-accent-blue text-[10px] font-mono rounded tracking-widest animate-pulse">
         SYS_OVERRIDE: MATRIX_CASCADE_ACTIVE... [ESC TO TERMINATE]
       </div>
     </div>
@@ -348,7 +348,7 @@ export default function CommandTerminal() {
               
               {/* Micro diagnostic telemetry headers */}
               <div className="hidden sm:flex items-center gap-3 text-[9px] text-muted/30">
-                <span>CPU: <span className="text-accent-green font-bold">{sysStats.cpu}%</span></span>
+                <span>CPU: <span className="text-accent-blue font-bold">{sysStats.cpu}%</span></span>
                 <span>RAM: <span className="text-amber-500 font-bold">{sysStats.ram}GB</span></span>
                 <span>PING: <span className="text-blue-400">14ms</span></span>
                 <span className="text-white/10">|</span>
@@ -370,7 +370,7 @@ export default function CommandTerminal() {
                     className={`pl-3 border-l whitespace-pre-wrap ${
                       entry.isError 
                         ? "text-accent-red border-accent-red/20" 
-                        : "text-accent-green border-accent-green/20"
+                        : "text-accent-blue border-accent-blue/20"
                     }`}
                   >
                     {entry.output}
@@ -388,7 +388,7 @@ export default function CommandTerminal() {
                   <button
                     key={cmd}
                     onClick={() => handleQuickBadgeClick(cmd)}
-                    className="font-mono text-[9px] text-muted/60 bg-white/[0.02] border border-white/5 rounded px-2 py-0.5 hover:text-accent-green hover:border-accent-green/20 cursor-pointer transition-all duration-150 whitespace-nowrap active:scale-95"
+                    className="font-mono text-[9px] text-muted/60 bg-white/[0.02] border border-white/5 rounded px-2 py-0.5 hover:text-accent-blue hover:border-accent-blue/20 cursor-pointer transition-all duration-150 whitespace-nowrap active:scale-95"
                   >
                     {cmd}
                   </button>
@@ -418,7 +418,7 @@ export default function CommandTerminal() {
                   value={input}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
-                  className="w-full bg-transparent border-none outline-none text-white font-mono caret-accent-green focus:ring-0 focus:border-none p-0 text-xs z-10"
+                  className="w-full bg-transparent border-none outline-none text-white font-mono caret-accent-blue focus:ring-0 focus:border-none p-0 text-xs z-10"
                   autoComplete="off"
                   autoCapitalize="none"
                   spellCheck="false"

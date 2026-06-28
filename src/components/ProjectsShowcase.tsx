@@ -28,7 +28,7 @@ const projects: Project[] = [
       <div className="w-full h-full flex flex-col justify-between p-6 font-mono text-xs text-muted/80 bg-obsidian">
         <div className="flex items-center justify-between border-b border-white/5 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
             <span>AUDIT_ENGINE: ACTIVE</span>
           </div>
           <span className="text-[9px] text-accent-red font-bold animate-pulse">VIOLATION DETECTED</span>
@@ -74,7 +74,7 @@ const projects: Project[] = [
       <div className="w-full h-full flex flex-col justify-between p-6 font-mono text-xs text-muted/80 bg-obsidian">
         <div className="flex items-center justify-between border-b border-white/5 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
             <span>AUTH_GATEWAY: ACTIVE</span>
           </div>
           <span className="text-[9px] text-muted/40">PORT: 8080</span>
@@ -82,19 +82,19 @@ const projects: Project[] = [
         
         <div className="my-auto space-y-3 py-4">
           <div className="p-3 bg-white/[0.02] border border-white/5 rounded-md flex items-center justify-between">
-            <span className="text-accent-green">POST /api/auth/login</span>
+            <span className="text-accent-blue">POST /api/auth/login</span>
             <span className="text-muted/40">200 OK</span>
           </div>
           
           <div className="flex items-center justify-between px-3 py-2 border border-dashed border-white/10 rounded bg-black/20">
-            <span className="flex items-center gap-1.5"><Database size={11} className="text-accent-green" /> Postgres</span>
+            <span className="flex items-center gap-1.5"><Database size={11} className="text-accent-blue" /> Postgres</span>
             <span className="text-muted/30">{"[Prisma]"}</span>
             <span className="flex items-center gap-1.5"><Shield size={11} className="text-accent-red" /> Bcrypt</span>
           </div>
 
           <div className="p-2.5 bg-black/40 border border-white/5 rounded-md text-[9px] text-muted/50 overflow-hidden">
-            <span className="text-accent-green block font-bold mb-0.5">JWT_TOKEN:</span>
-            <p className="truncate text-accent-green/80">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c3JfMDEiLCJyb2xlIjoiYWRtaW4ifQ.uX8r901...</p>
+            <span className="text-accent-blue block font-bold mb-0.5">JWT_TOKEN:</span>
+            <p className="truncate text-accent-blue/80">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c3JfMDEiLCJyb2xlIjoiYWRtaW4ifQ.uX8r901...</p>
           </div>
         </div>
         
@@ -117,7 +117,7 @@ const projects: Project[] = [
       <div className="w-full h-full flex flex-col justify-between p-6 font-mono text-xs text-muted/80 bg-obsidian">
         <div className="flex items-center justify-between border-b border-white/5 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
             <span>INFERENCE_ENGINE: ONLINE</span>
           </div>
           <span className="text-[9px] text-muted/40">ACC: 92.4%</span>
@@ -131,8 +131,8 @@ const projects: Project[] = [
             </div>
             <span className="text-muted/30 text-[9px]">-&gt;</span>
             <div className="flex flex-col items-center gap-1">
-              <div className="w-9 h-9 rounded-full border border-accent-green/30 flex items-center justify-center bg-black/60 shadow-[0_0_15px_rgba(0,255,204,0.15)]"><Zap size={14} className="text-accent-green" /></div>
-              <span className="text-[8px] text-accent-green font-bold">TF_MODEL</span>
+              <div className="w-9 h-9 rounded-full border border-accent-blue/30 flex items-center justify-center bg-black/60 shadow-[0_0_15px_rgba(0,255,204,0.15)]"><Zap size={14} className="text-accent-blue" /></div>
+              <span className="text-[8px] text-accent-blue font-bold">TF_MODEL</span>
             </div>
             <span className="text-muted/30 text-[9px]">-&gt;</span>
             <div className="flex flex-col items-center gap-1">
@@ -140,7 +140,7 @@ const projects: Project[] = [
               <span className="text-[8px] text-muted/40">AES_256</span>
             </div>
           </div>
-          <div className="text-center text-[8px] text-accent-green/80 animate-pulse mt-1">
+          <div className="text-center text-[8px] text-accent-blue/80 animate-pulse mt-1">
             STATUS: DECRYPTING INGESTION STREAM... SUCCESS
           </div>
         </div>
@@ -164,7 +164,7 @@ const projects: Project[] = [
       <div className="w-full h-full flex flex-col justify-between p-6 font-mono text-xs text-muted/80 bg-obsidian">
         <div className="flex items-center justify-between border-b border-white/5 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
             <span>ALEMBIC: SYNCED</span>
           </div>
           <span className="text-[9px] text-muted/40">REV: f82d8c3e</span>
@@ -173,14 +173,14 @@ const projects: Project[] = [
         <div className="my-auto space-y-2 py-3 text-left">
           <div className="p-2.5 bg-black/50 border border-white/5 rounded font-mono text-[8px] space-y-0.5 overflow-hidden">
             <div className="text-muted/40">// Running upgrade None -&gt; f82d8c3e_init</div>
-            <div className="text-accent-green truncate">INFO  [alembic] Context impl PostgresqlImpl.</div>
-            <div className="text-accent-green truncate">INFO  [alembic] Will assume transactional DDL.</div>
-            <div className="text-accent-green truncate">INFO  [alembic] Running upgrade: f82d8c3e</div>
+            <div className="text-accent-blue truncate">INFO  [alembic] Context impl PostgresqlImpl.</div>
+            <div className="text-accent-blue truncate">INFO  [alembic] Will assume transactional DDL.</div>
+            <div className="text-accent-blue truncate">INFO  [alembic] Running upgrade: f82d8c3e</div>
           </div>
 
           <div className="flex items-center justify-between text-[9px] bg-white/[0.01] border border-white/5 p-2 rounded">
-            <span className="flex items-center gap-1"><GitBranch size={10} className="text-accent-green" /> scopes:</span>
-            <span className="text-accent-green/80">write:blogs, read:users</span>
+            <span className="flex items-center gap-1"><GitBranch size={10} className="text-accent-blue" /> scopes:</span>
+            <span className="text-accent-blue/80">write:blogs, read:users</span>
           </div>
         </div>
 
@@ -203,7 +203,7 @@ const projects: Project[] = [
       <div className="w-full h-full flex flex-col justify-between p-6 font-mono text-xs text-muted/80 bg-obsidian">
         <div className="flex items-center justify-between border-b border-white/5 pb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
             <span>CF_WORKER: EDGE_DEPLOYED</span>
           </div>
           <span className="text-[9px] text-muted/40">ZONE: US-EAST</span>
@@ -211,23 +211,23 @@ const projects: Project[] = [
 
         <div className="my-auto space-y-3 py-4">
           <div className="flex items-center justify-between text-[8px] bg-white/[0.01] border border-white/5 p-2 rounded">
-            <span className="flex items-center gap-1"><Cpu size={10} className="text-accent-green" /> Edge Node</span>
+            <span className="flex items-center gap-1"><Cpu size={10} className="text-accent-blue" /> Edge Node</span>
             <span className="text-muted/30">{"--[Resend API]-->"}</span>
-            <span className="text-accent-green font-bold">Client Inbox</span>
+            <span className="text-accent-blue font-bold">Client Inbox</span>
           </div>
 
           <div className="grid grid-cols-3 gap-2 text-center text-[8px] pt-1">
             <div className="p-1.5 bg-black/40 border border-white/5 rounded">
               <div className="text-muted/40 font-bold mb-1">APPLIED</div>
-              <div className="text-accent-green font-mono">14 Candidates</div>
+              <div className="text-accent-blue font-mono">14 Candidates</div>
             </div>
-            <div className="p-1.5 bg-black/40 border border-accent-green/20 rounded shadow-[0_0_10px_rgba(0,255,204,0.05)]">
-              <div className="text-accent-green font-bold mb-1">INTERVIEW</div>
-              <div className="text-accent-green font-mono">3 Active</div>
+            <div className="p-1.5 bg-black/40 border border-accent-blue/20 rounded shadow-[0_0_10px_rgba(0,255,204,0.05)]">
+              <div className="text-accent-blue font-bold mb-1">INTERVIEW</div>
+              <div className="text-accent-blue font-mono">3 Active</div>
             </div>
             <div className="p-1.5 bg-black/40 border border-white/5 rounded">
               <div className="text-muted/40 font-bold mb-1">OFFERED</div>
-              <div className="text-accent-green font-mono">1 Sent</div>
+              <div className="text-accent-blue font-mono">1 Sent</div>
             </div>
           </div>
         </div>
@@ -267,8 +267,8 @@ function ProjectCard({ proj, index }: { proj: Project; index: number }) {
 
       {/* Details */}
       <div className="flex flex-col gap-4 w-full md:w-[50%]">
-        <div className="flex items-center gap-2 px-2.5 py-1 rounded bg-white/[0.03] border border-white/5 text-[10px] tracking-widest font-mono text-accent-green w-fit">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+        <div className="flex items-center gap-2 px-2.5 py-1 rounded bg-white/[0.03] border border-white/5 text-[10px] tracking-widest font-mono text-accent-blue w-fit">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
           <span>STATUS: {proj.status}</span>
         </div>
         
@@ -291,7 +291,7 @@ function ProjectCard({ proj, index }: { proj: Project; index: number }) {
             href={proj.customLink || `https://github.com/abubakarxdev/${proj.id}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-sans font-medium text-sm text-primary hover:text-accent-green transition-colors group cursor-pointer"
+            className="inline-flex items-center gap-2 font-sans font-medium text-sm text-primary hover:text-accent-blue transition-colors group cursor-pointer"
           >
             {proj.customLinkText || "View Project"}
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />

@@ -84,7 +84,7 @@ export default function VerifiedCredentials() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-left"
         >
-          <p className="font-mono text-[10px] md:text-xs text-accent-green tracking-widest uppercase mb-2">
+          <p className="font-mono text-[10px] md:text-xs text-accent-blue tracking-widest uppercase mb-2">
             // SECURITY_&_SYSTEM_CERTIFICATIONS
           </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-sans">
@@ -104,16 +104,16 @@ export default function VerifiedCredentials() {
             <motion.div
               key={idx}
               variants={cardVariants}
-              className="glass-panel p-6 flex flex-col justify-between gap-6 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] hover:border-accent-green/30 transition-all duration-300 relative overflow-hidden group"
+              className="glass-panel p-6 flex flex-col justify-between gap-6 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,204,0.15)] hover:border-accent-blue/30 transition-all duration-300 relative overflow-hidden group"
             >
               {/* Top Accent line simulating ticket cut */}
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-accent-green/25 group-hover:bg-accent-green/60 transition-colors duration-300" />
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-accent-blue/25 group-hover:bg-accent-blue/60 transition-colors duration-300" />
               
               <div className="flex flex-col gap-4">
                 {/* System Tag */}
                 <div className="flex items-center justify-between font-mono text-[9px] text-muted/40">
                   <div className="flex items-center gap-1">
-                    <ShieldCheck size={11} className="text-accent-green/80" />
+                    <ShieldCheck size={11} className="text-accent-blue/80" />
                     <span>NODE_SECURED</span>
                   </div>
                   <span>TICKET_ID: {cred.id}</span>
@@ -138,7 +138,7 @@ export default function VerifiedCredentials() {
                   {cred.tags.map((tag) => (
                     <span 
                       key={tag}
-                      className="font-mono text-[9px] tracking-wider px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-muted/70 group-hover:border-accent-green/10 group-hover:text-accent-green transition-all duration-200"
+                      className="font-mono text-[9px] tracking-wider px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-muted/70 group-hover:border-accent-blue/10 group-hover:text-accent-blue transition-all duration-200"
                     >
                       {tag}
                     </span>
@@ -150,7 +150,7 @@ export default function VerifiedCredentials() {
                   href={cred.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 font-mono text-[10px] text-accent-green hover:text-accent-green/80 hover:shadow-[0_0_10px_rgba(0,255,204,0.1)] transition-all duration-200 group-hover:translate-x-0.5"
+                  className="flex items-center gap-1 font-mono text-[10px] text-accent-blue hover:text-accent-blue/80 hover:shadow-[0_0_10px_rgba(0,255,204,0.1)] transition-all duration-200 group-hover:translate-x-0.5"
                 >
                   <span>Verify Node</span>
                   <ArrowUpRight size={10} />
